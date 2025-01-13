@@ -1,63 +1,64 @@
-# Edom.js
+# Fleet
 
-Edom.js is a JavaScript library that allows you to interact with the DOM easily.
+**Fleet** is fork of [Edom.js](https://github.com/eric-fahendrena/Edom), a JavaScript library that allows you to interact with the DOM.
 
 <div>
-  <img src="edom-logo.png" alt="Edom.js Logo" style="width: 100%;">
+  <img src="fleet.png" alt="FleetLogo" style="width: 100%;">
 </div>
 
 ## Installation
 
-### Edom.js as a single JavaScript file
+### Fleet as a single JavaScript file
 
-Load edom.js to your html file followed by your javascript code.
+Load fleet to your html file followed by your javascript code.
 ```html
-<script src="edom.js"></script>
+<script src="fleet.js"></script>
 <script>
   // Your code here ...
 </script>
 ```
 
-### Edom.js as npm package
+### Fleet as npm package
 
-Install edom.js with npm:
+Install fleet with npm:
 ```bash
-npm install edomjs
+npm install fleet.js
 ```
-Import edom.js into you project:
+Import fleet into you project:
 ```js
-import edom from 'edomjs';
+import fleet from 'fleet.js';
 
 // if you don't use npm ...
-import edom from 'https://cdn.jsdelivr.net/npm/edomjs@latest';
+import fleet from 'https://cdn.rivolink.mg/fleet/1.0.0/fleet.js';
 ```
 
 ## Examples
 
-Edom.js is easy to use.
+Fleet is easy to use.
 
 ### Hello, world!
 
 Write "Hello, world!" in an `h1` element:
 ```js
-import edom from 'edomjs';
+import fleet from 'fleet';
 
 // Create h1 element
-const h1 = edom.create('h1');
+const h1 = fleet.create('h1');
+
 // Write a text
-edom.write(h1)('Hello, world!');
+fleet.setText(h1, 'Hello, world!');
 
 // Add the element to the body
-edom.append(h1)(document.body);
+fleet.append(h1, document.body);
 
 // Or create many elements
-const elements = edom.create(['h2','h3','h4']);
+const elements = fleet.create(['h2','h3','h4']);
 
 // Write a text to all elements
-edom.write(elements)('Hello, world!');
+fleet.setText(elements, 'Hello, world!');
 
 // Add all elements to the body
-edom.append(elements)(document.body);
+fleet.append(elements, document.body);
 
 
 ```
@@ -65,61 +66,59 @@ edom.append(elements)(document.body);
 ### Functions
 
 ```js
-const element = edom.create('div'); // create an element
+const element = fleet.create('div'); // create an element
 
-// write text to an element
-edom.write(element)("Your text here");
+// setText text to an element
+fleet.setText(element, "Your text here");
 
 // set html (this completely changes the html inside the element)
-edom.setHTML(element)('<span>HTML code</span>');
+fleet.setHTML(element, '<span>HTML code</span>');
 
 // add html (this adds an html code in the element)
-edom.addHTML(element)('<span>HTML code</span>');
+fleet.addHTML(element, '<span>HTML code</span>');
 
 // inserting element
-edom.append(element)(parent); // append element to a parent element
-edom.insertBefore(element)(newElement);
-edom.insertAfter(element)(newElement);
+fleet.append(element, parent);
+fleet.preprend(element, parent);
 
 // add attribute
-edom.addAttr(element)({'prop': 'value', 'prop1': 'value'});
+fleet.addAttr(element, {prop1: 'value', prop2: 'value'});
 
 // add style to an element
-edom.addCSS(element)({color: 'red', fontSize: '12px'});
+fleet.addCSS(element, {color: 'red', fontSize: '12px'});
 
 // get computed css
-const compCSS = edom.getComputedCSS(element)('width');
+const compCSS = fleet.getComputedCSS(element, 'width');
 
 // classes utilities
-edom.addClass(element)('my-class'); // add class
-edom.removeClass(element)('my-class'); // remove class
-edom.toggleClass(element)('my-class'); // toggle class
+fleet.addClass(element, 'my-class'); // add class
+fleet.removeClass(element, 'my-class'); // remove class
+fleet.toggleClass(element, 'my-class'); // toggle class
 
 // event handling
-edom.addEvent(element)(eventType)(handler); // add event listener
-edom.removeEvent(element)(eventType)(handler); // remove event listener
+fleet.addEvent(element, eventType, handler); // add event listener
+fleet.removeEvent(element, eventType, handler); // remove event listener
 
 // apply css animation
-edom.applyAnimation(element)({
+fleet.applyAnimation(element, {
   name: animationName,
   duration: animationDuration,
   timingFunction: animationTimingFunction
 });
 
 // ajax get
-edom.ajaxGet(url)(callback);
-const promise = edom.fetchGet(url);
+fleet.ajaxGet(url, callback);
+const promise = fleet.fetchGet(url);
 
 // serialize form data
-const jsonObject = edom.serializeForm(formElement);
+const jsonObject = fleet.serializeForm(formElement);
 
 // multiply an element
-const p = edom.create('p');
-edom.write(p)('Hello!');
-edom.append(p)(document.body);
-edom.multiply(p)(5);
+const p = fleet.create('p');
+fleet.setText(p, 'Hello!');
+fleet.append(p, document.body);
+fleet.multiply(p, 5);
 ```
-
 
 ## Contributing
 

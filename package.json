@@ -1,31 +1,31 @@
 {
-  "name": "edomjs",
-  "version": "2.0.1",
-  "description": "Edom.js is a JavaScript library that allows you to interact easily with Document Object Model (DOM).",
-  "main": "dist/edom.js",
+  "name": "fleet.js",
+  "version": "1.0.0",
+  "description": "Fleet is a fork of Edom.js, a JavaScript library that allows you to interact with DOM.",
+  "main": "dist/fleet.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "copy": "cp src/edom.js dist/edom.js",
-    "minify": "npx terser --compress passes=2 --mangle -o dist/edom.min.js --source-map \"content=dist/edom.min.js.map,includeSources,url=edom.min.js.map\" src/edom.js",
+    "copy": "cp src/fleet.js dist/fleet.js",
+    "minify": "npx terser --compress passes=2 --mangle -o dist/fleet.min.js --source-map \"filename=dist/fleet.min.js.map,includeSources,url=fleet.min.js.map\" src/fleet.js",
     "build": "npm-run-all --aggregate-output --parallel copy minify"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/eric-fahendrena/Edom.git"
+    "url": "git+ssh://git@github.com/RivoLink/fleet.git"
   },
   "keywords": [
-    "edomjs",
+    "Fleet",
     "DOM",
     "JavaScript",
     "library",
     "vanilla"
   ],
-  "author": "Eric Razanapahendrena",
+  "author": "Rivo Link",
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/eric-fahendrena/Edom/issues"
+    "url": "https://github.com/RivoLink/fleet/issues"
   },
-  "homepage": "https://github.com/eric-fahendrena/Edom#readme",
+  "homepage": "https://github.com/RivoLink/fleet#readme",
   "devDependencies": {
     "npm-run-all2": "^6.2.2",
     "terser": "^5.31.6"
