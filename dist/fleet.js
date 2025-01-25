@@ -2,7 +2,7 @@
  * Fleet v1.0.0
  * https://github.com/RivoLink/fleet
  *
- * Date: 2025-01-13T17:45Z
+ * Date: 2025-01-25T15:35Z
  */
 (function (global, factory) {
 
@@ -23,6 +23,7 @@
          */
         constructor(root = document) {
             this.root = root;
+            this.globals = {};
         }
 
         /**
@@ -50,6 +51,45 @@
         }
 
         /**
+         * Set a global variable.
+         * @param {String} key The key for the global variable.
+         * @param {*} value The value to set for the global variable.
+         */
+        $set(key, value) {
+            this.globals[key] = value;
+        }
+
+        /**
+         * Get a global variable.
+         * @param {String} key The key for the global variable.
+         * @param {*} _default The default value to return if the key is not found (optional).
+         * @return {*} The value of the global variable or the default value if the key is not found.
+         */
+        $get(key, _default = null) {
+            return this.globals[key] || _default;
+        }
+
+        /**
+         * Save a value in localStorage.
+         * @param {String} key The key for the stored value.
+         * @param {*} value The value to store.
+         */
+        $save(key, value) {
+            localStorage.setItem(key, this.$stringify(value));
+        }
+
+        /**
+         * Load a value from localStorage.
+         * @param {String} key The key for the stored value.
+         * @param {*} _default The default value to return if the key is not found (optional).
+         * @return {*} The value stored for the key or the default value if the key is not found.
+         */
+        $load(key, _default = null) {
+            const value = localStorage.getItem(key);
+            return value ? this.$json(value) : _default;
+        }
+
+        /**
          * Safely parse a JSON string into a JavaScript object.
          * @param {String} text The JSON string to parse.
          * @return {Object} The parsed JavaScript object, or an empty object if parsing fails.
@@ -60,6 +100,15 @@
             } catch (e) {
                 return {};
             }
+        }
+
+        /**
+         * Safely stringify a JavaScript object into a JSON string.
+         * @param {Object} object The JavaScript object to stringify.
+         * @return {String} The JSON string representation of the object.
+         */
+        $stringify(object) {
+            return JSON.stringify(object || {});
         }
 
         /**
@@ -123,6 +172,15 @@
          */
         child(parent, query) {
             return parent.querySelector(query);
+        }
+
+        /**
+         * Count the number of elements matching a CSS selector.
+         * @param {String} query The CSS selector to match elements against.
+         * @return {Number} The number of elements matching the CSS selector.
+         */
+        count(query) {
+            return this.root.querySelectorAll(query).length;
         }
 
         /**
