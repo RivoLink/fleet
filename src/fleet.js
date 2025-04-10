@@ -17,6 +17,8 @@
 
     class Fleet {
 
+        static LS_KEY = "__fleet";
+
         /**
          * Constructor for Fleet.
          * @param {Document|HTMLElement} root The root element to operate within. Defaults to `document`.
@@ -75,7 +77,9 @@
          * @param {*} value The value to store.
          */
         $save(key, value) {
-            localStorage.setItem(key, this.$stringify(value));
+            const data = this.$json(localStorage.getItem(Fleet.LS_KEY));
+            data[key] = value;
+            localStorage.setItem(Fleet.LS_KEY, this.$stringify(data));
         }
 
         /**
@@ -85,8 +89,8 @@
          * @return {*} The value stored for the key or the default value if the key is not found.
          */
         $load(key, _default = null) {
-            const value = localStorage.getItem(key);
-            return value ? this.$json(value) : _default;
+            const data = this.$json(localStorage.getItem(Fleet.LS_KEY));
+            return (data && data[key]) ? data[key] : _default;
         }
 
         /**
@@ -96,7 +100,7 @@
          */
         $json(text) {
             try {
-                return JSON.parse(text);
+                return JSON.parse(text) || {};
             } catch (e) {
                 return {};
             }
