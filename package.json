@@ -1,6 +1,6 @@
 {
   "name": "fleet.js",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Fleet is a fork of Edom.js, a JavaScript library that allows you to interact with DOM.",
   "main": "dist/fleet.js",
   "scripts": {
