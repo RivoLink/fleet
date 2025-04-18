@@ -460,8 +460,8 @@
         ajaxPost(url, token, data, onSuccess, onError) {
             const xhr = new XMLHttpRequest();
             xhr.open('POST', url, true);
-            xhr.setRequestHeader('content-type', 'application/json');
-            xhr.setRequestHeader('authorization', 'bearer ' + token);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.setRequestHeader('Authorization', 'Bearer ' + token);
             xhr.onload = () => {onSuccess(this.$json(xhr.responseText), data)};
             xhr.onerror = () => {onError(data)};
             xhr.send(JSON.stringify(data));
@@ -477,7 +477,7 @@
         ajaxGet(url, token, onSuccess, onError) {
             const xhr = new XMLHttpRequest();
             xhr.open('GET', url, true);
-            xhr.setRequestHeader('authorization', 'bearer ' + token);
+            xhr.setRequestHeader('Authorization', 'Bearer ' + token);
             xhr.onload = () => {onSuccess(this.$json(xhr.responseText))};
             xhr.onerror = () => {onError()};
             xhr.send();
