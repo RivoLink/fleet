@@ -1,8 +1,8 @@
 /*!
- * Fleet v1.1.1
+ * Fleet v1.1.2
  * https://github.com/RivoLink/fleet
  *
- * Date: 2025-04-11T01:50Z
+ * Date: 2025-04-18T22:50Z 
  */
 (function (global, factory) {
 

@@ -29,7 +29,7 @@ Import fleet into you project:
 import fleet from 'fleet.js';
 
 // if you don't use npm ...
-import fleet from 'https://cdn.rivolink.mg/fleet/1.0.0/fleet.js';
+import fleet from 'https://cdn.rivolink.mg/fleet/1.1.2/fleet.js';
 ```
 
 ## Examples
